@@ -1,0 +1,4 @@
+# config.yaml
+
+persistence:
+  existingClaim: pvc-01

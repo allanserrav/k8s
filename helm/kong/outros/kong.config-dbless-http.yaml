@@ -1,0 +1,63 @@
+# Basic configuration for Kong without the ingress controller, using the Postgres subchart
+# This installation does not create an Ingress or LoadBalancer Service for
+# the Admin API. It requires port-forwards to access without further
+# configuration to add them, e.g.:
+# kubectl port-forward deploy/your-deployment-kong 8001:8001
+
+image:
+  repository: kong
+  tag: "3.0"
+
+env:
+  database: "off"
+
+enterprise:
+  enabled: true
+  license_secret: kong-enterprise-license
+  portal:
+    enabled: false
+  rbac:
+    admin_api_auth: basic-auth
+    admin_gui_auth_conf_secret: kong-config-secret
+    enabled: true
+    session_conf_secret: kong-config-secret
+  smtp:
+    enabled: false
+  vitals:
+    enabled: false
+
+admin:
+  enabled: true
+  http:
+    enabled: true
+  ingress:
+    enabled: true
+    hostname: kong-admin.allanserrav.com
+    path: /dragon
+  type: ClusterIP
+portalapi:
+  enabled: true
+  http:
+    enabled: true
+  ingress:
+    enabled: true
+    hostname: kong-api.allanserrav.com
+    path: /dragon
+  type: ClusterIP
+manager:
+  enabled: true
+  http:
+    enabled: true
+  ingress:
+    enabled: true
+    hostname: kong-manager.allanserrav.com
+    path: /dragon
+  type: ClusterIP
+
+ingressController:
+  enabled: true # necessário para o funcionamento do ingress
+
+proxy:
+  # Enable creating a Kubernetes service for the proxy
+  enabled: true
+  type: LoadBalancer

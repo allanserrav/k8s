@@ -1,0 +1,19 @@
+# File custom-values.yml
+## Install with "helm install --values=./custom-values.yml traefik traefik/traefik
+additionalArguments:
+  - "--log.level=DEBUG"
+
+providers:
+  kubernetesCRD:
+    allowExternalNameServices: true
+    allowCrossNamespace: true
+
+accessLog:
+  filePath: "/path/to/access.log"
+  format: json
+  bufferingSize: 100
+
+log:
+  filePath: "/path/to/traefik.log"
+  format: json
+  bufferingSize: 100

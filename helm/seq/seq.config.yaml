@@ -1,0 +1,23 @@
+# config.yaml
+
+persistence:
+  existingClaim: pvc-dev-01
+
+# ingress:
+#   annotations:
+#     kubernetes.io/ingress.class: nginx
+
+# ui:
+#   ingress:
+#     enabled: true
+#     path: /
+#     hosts:
+#       - seq.mydomain.com
+
+
+# ingestion:
+#   ingress:
+#     enabled: true
+#     path: /
+#     hosts:
+#       - ingestion.seq.mydomain.com
