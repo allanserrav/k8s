@@ -271,7 +271,7 @@ proxy:
     containerPort: 8443
     enabled: false
     hostPort: 443
-  type: NodePort
+  type: LoadBalancer
 replicaCount: 1
 secretVolumes: []
 status:
