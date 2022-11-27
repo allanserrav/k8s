@@ -45,3 +45,5 @@ helm upgrade api kong/kong --namespace kong --values helm/kong/kong.config-http.
 
 # Konga
 helm install konga ./ -n kong -f 0/helm/kong/konga.config.yaml
+
+# Jenkins
